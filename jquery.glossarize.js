@@ -108,7 +108,7 @@
 			/**
 			 * Wrap terms
 			 */
-
+			console.log(base);
 			base.wrapTerms();
 
 
@@ -151,16 +151,17 @@
 		      			var temp = this.glossary[i].term.split(',');
 								//Trim and find the def
 								for(var j = 0; j < temp.length; j++){
-									temp[j] = temp[j].trim();
-									temp[j] = temp[j].toLowerCase();
+									temp[j] = temp[j].trim().toLowerCase();
 									if(temp[j] == this.clean(term)){
+
 										return this.glossary[i].description.replace(/\"/gi, '&quot;')
 									}
 								}
 		      	}
 						//Else find term
 		      	else{
-		      		if(this.glossary[i].term == this.clean(term)){
+
+		      		if(this.glossary[i].term == term){
 		            	return this.glossary[i].description.replace(/\"/gi, '&quot;')
 		      		}
 		      	}
@@ -251,7 +252,6 @@
 					var excl = reEx.exec(data);
 
 					data = data.replace(re,function(match, item , offset, string){
-
 
 						if(base.options.replaceOnce && inArrayIn(match, base.replaced) >= 0){
 
