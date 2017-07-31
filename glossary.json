@@ -4,7 +4,7 @@
     "description" : "A living being, especially an animal"
   },
   {
-    "term": "genetic, hereditary, !genetic testing",
+    "term": "genetic, !genetic testing",
     "description": "relating to genes or heredity: genetic abnormalities."
   },
   {
@@ -34,5 +34,25 @@
   {
     "term" : "midst",
     "description" : "The condition of being surrounded or beset by something"
+  },
+  {
+   "term":"Firewall",
+   "description":"Firewall"
+  },
+  {
+     "term":"Firewall Software",
+     "description":"Firewall Software"
+  },
+  {
+     "term":"Network Components",
+     "description":"Network Components"
+  },
+  {
+     "term":"Network Administrator",
+     "description":"Network Administrator"
+  },
+  {
+     "term":"Network, networking, network alias",
+     "description":"Network"
   }
 ]
