@@ -34,7 +34,8 @@
       replaceOnce: false, /* Replace only once in a TextNode */
       replaceClass: 'glossarizer_replaced',
       caseSensitive: false,
-      exactMatch: false
+      exactMatch: false,
+      jsonResourcePath: false
   }
 
   /**
@@ -71,8 +72,18 @@
 
     /* Fetch glossary JSON */
 
-    $.getJSON(this.options.sourceURL).then(function (data) {
-      base.glossary = data
+    $.getJSON(this.options.sourceURL).then($.proxy(function (data) {
+      if (this.options.jsonResourcePath) {
+        var pathParts = this.options.jsonResourcePath.split("']['");
+        pathParts = $.map(pathParts, function(v, i) {
+          return v.replace(/[\[\]\']+/g, '');
+        });
+        $.each(pathParts, function(i, v) {
+          base.glossary = data[v];
+        })
+      } else {
+        base.glossary = data
+      }
 
       if (!base.glossary.length || base.glossary.length == 0) return
 
@@ -106,7 +117,7 @@
        */
 
       base.wrapTerms()
-    })
+    }, this))
   }
 
   /**

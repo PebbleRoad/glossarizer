@@ -81,13 +81,14 @@ If you are writing content that uses specialist vocabulary or many acronyms you 
 
 
     defaults = {
-      sourceURL     : '', 
-      replaceTag    : 'abbr', 
-      lookupTagName : 'p, ul, a',
-      callback      : null,
-      replaceOnce   : true,
-      replaceClass  : glossarizer_replaced,
-      caseSensitive : false
+      sourceURL        : '', 
+      replaceTag       : 'abbr', 
+      lookupTagName    : 'p, ul, a',
+      callback         : null,
+      replaceOnce      : true,
+      replaceClass     : glossarizer_replaced,
+      caseSensitive    : false,
+      jsonResourcePath : false
     }
 
 
@@ -102,6 +103,29 @@ Attribute  | Options                   | Default             | Description
 `replaceClass`    | *string*                  | `glossarizer_replaced`               | Class name of the replaceTag
 `callback`    | *method*                  | `null`               | Completed callback 
 `caseSensitive`    | *boolean*                  | `false`               | Match case sensitive
+`jsonResourcePath`    | *string*                  | `false`               | JSON rsource path for returned data
+
+## JSON Resource Path
+
+Data may sometimes be returned as an attribute on an object, like: 
+
+    {
+      "glossary": {
+        "count": 2,
+        "terms": [
+          {
+            "term": "death, !death star",
+            "description": "Cessation of all biological functions"
+          },
+          {
+            "term": "genetic, !genetic testing, genes, DNA",
+            "description": "relating to genes or heredity: genetic abnormalities."
+          }
+        ]
+      }
+    }
+
+The JSON Resource Path option specifies the path in the JSON object to the properly formatted data, in this case, you could provide `['glossary']['terms']`.
 
 ## External Methods
 
